@@ -10,7 +10,8 @@ import {createStore} from 'redux'
 import addUer from './redux/render'
 import {Provider} from 'react-redux'
 const store = createStore(addUer)
-const render = () => ReactDOM.render(
+
+ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={UserManagement}/>
@@ -18,7 +19,3 @@ const render = () => ReactDOM.render(
         </Router>
     </Provider>
     , document.getElementById('app'))
-
-render();
-
-store.subscribe(render);

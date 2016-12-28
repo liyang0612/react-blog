@@ -1,8 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class UserList extends React.Component {
     render() {
-        var text = this.props.list.map(function (val) {
+        var text = this.props.values.map(function (val) {
             return <tr key={val.name}>
                 <td>
                     <button className="btn">编辑 <i className="glyphicon glyphicon-pencil"></i></button>
@@ -21,4 +22,10 @@ class UserList extends React.Component {
     }
 }
 
-export default UserList
+function mapStateToProps(state) {
+    return {
+        values : state.add
+    }
+}
+
+export default connect (mapStateToProps)(UserList)
