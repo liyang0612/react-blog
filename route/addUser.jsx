@@ -14,7 +14,6 @@ class AddUser extends React.Component {
 
     handleRadio(e) {
         this.state.radioVal = e.target.value;
-        console.log(this.state.radioVal)
     }
 
     handleClick() {
@@ -31,9 +30,9 @@ class AddUser extends React.Component {
             return false;
         } else {
             this.props.addAction(text)
+            this.refs.username.value=this.refs.password.value=""
             alert("添加成功")
         }
-        console.log(userSex)
     }
 
     render() {
@@ -66,13 +65,14 @@ class AddUser extends React.Component {
     }
 }
 
-
+//把store中的状态绑定到props
 function mapStateToProps(state) {
     return {
         info: state.add
     }
 }
 
+//把action绑定到props
 function mapDispatchToProps(dispatch) {
     return {
         addAction: bindActionCreators(addUser, dispatch)
