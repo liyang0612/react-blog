@@ -12,10 +12,10 @@ import {Provider} from 'react-redux'
 const store = createStore(addUer)
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router history={browserHistory}>
-            <Route path="/" component={UserManagement}/>
-            <Route path="addUser" component={AddUser}/>
-        </Router>
-    </Provider>
-    , document.getElementById('app'))
+	<Provider store={store}>
+		<Router history={browserHistory}>
+			<Route path="/" component={UserManagement}/>
+			<Route path="addUser" component={AddUser}/>
+		</Router>
+	</Provider>
+	, document.getElementById('app'))

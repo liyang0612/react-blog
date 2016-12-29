@@ -1,3 +1,4 @@
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var config = {
     entry: {
         app: "./App.js"
@@ -19,6 +20,9 @@ var config = {
                 presets: ['es2015','react']
             }
         }]
-    }
+    },
+    plugins: [
+        new OpenBrowserPlugin({ url: 'http://localhost:9090' })
+    ]
 }
 module.exports = config
