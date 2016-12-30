@@ -1,7 +1,7 @@
 import {ADDUSER, DELETEUSER, EDITUSER, INDEX} from './action'
 import {combineReducers} from 'redux'
 
-function add(state = [{name: "liyang", password: "123455", sex: "男", index: 1}], action) {
+function add(state = [{name: "xxxxx", password: "123455", sex: "男", index: 1}], action) {
     switch (action.type) {
         case ADDUSER:
             return [...state, action.text]
