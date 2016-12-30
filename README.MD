@@ -1,6 +1,6 @@
 ## React+Redux+React-router简单Demo
 ![](./static/GIF.gif)
-
+***
 安装依赖：
 
     npm install
@@ -14,14 +14,15 @@
 [React-router中文文档](http://react-guide.github.io/react-router-cn/)
 [ES6入门教程](http://es6.ruanyifeng.com/)
 
-***
 
 ###知识点总结：
 ####redux
-* render里面state不可直接修改，可以使用Object.assgin创建副本或者使用[...state]!
+*  render里面state不可直接修改，可以使用Object.assgin创建副本或者使用[...state]!
 *  render拆分管理不同state (combineReducers)
 
 ####react+react-router
-*  把store绑定到路由上
+*  把store绑定到路由上 *(import { Provider } from 'react-redux')*
 *  通过connect的mapStateToProps参数把redux的state绑定到props，然后在页面通过props得到数据
 *  通过connect的mapDispatchToProps参数把action绑定到props，state改变时渲染页面
+*(import { bindActionCreators }) from 'redux')*
+* [connect参数详解](http://cn.redux.js.org/docs/react-redux/api.html)
