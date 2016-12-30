@@ -3,16 +3,19 @@ import UserList from './userList.jsx'
 import UserHead from './UserHead.jsx'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
-import { bindActionCreators } from "redux"
-import { deleteUser } from '../redux/action'
+import {bindActionCreators} from "redux"
+import {deleteUser} from '../redux/action'
 
-var thProps = ["编辑","name","password","sex","删除"]
-class App extends React.Component{
+var thProps = ["编辑", "name", "password", "sex", "删除"]
+class App extends React.Component {
     handleDELETE(index) {
-        this.props.deleteAction(index)
+        var password = prompt("请先输入密码")
+        if (password === this.props.name[index].password)
+            this.props.deleteAction(index)
+        else alert("密码错误")
     }
+
     render() {
-        // console.log(this.props)
         return <div>
             <h1>用户管理</h1>
             <div>
@@ -29,14 +32,14 @@ class App extends React.Component{
 }
 function mapStateToProps(state) {
     return {
-        name: state.add.name
+        name: state.add
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        deleteAction: bindActionCreators(deleteUser,dispatch)
+        deleteAction: bindActionCreators(deleteUser, dispatch)
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
