@@ -13,7 +13,7 @@
 
 [Redux中文文档](http://cn.redux.js.org/index.html)
 
-[React-router中文文档](http://react-guide.github.io/react-router-cn/)   
+[React-router中文文档](http://react-guide.github.io/react-router-cn/)
 
 [ES6入门教程](http://es6.ruanyifeng.com/)
 

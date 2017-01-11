@@ -5,6 +5,8 @@ import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux"
 import {deleteUser} from '../redux/action'
+import myAjax from '../myAjax'
+
 
 var thProps = ["编辑", "name", "password", "sex", "删除"]
 class App extends React.Component {
@@ -15,9 +17,15 @@ class App extends React.Component {
         else alert("密码错误")
     }
 
+    handleFetch() {
+       myAjax('post','/api',function (data) {
+           console.log(data)
+       })
+    }
+
     render() {
         return <div>
-            <h1>用户管理</h1>
+            <h1 onClick={this.handleFetch.bind(this)}>用户管理</h1>
             <div>
                 <Link to="addUser" className="btn btn-success"><i className="glyphicon glyphicon-user"></i> 添加新用户</Link>
             </div>
