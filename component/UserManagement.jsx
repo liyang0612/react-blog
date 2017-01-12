@@ -18,9 +18,9 @@ class App extends React.Component {
     }
 
     handleFetch() {
-       myAjax('post','/api',function (data) {
-           console.log(data)
-       })
+      myAjax('POST','/api',function (data) {
+          console.log(data);
+      },{name: 18})
     }
 
     render() {

@@ -1,21 +1,15 @@
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-var webpack = require('webpack')
-var path = require('path')
-var config = {
+var webpack = require('webpack');
+// var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+module.exports = {
     entry: [
-        'webpack-hot-middleware/client?http://127.0.0.1:8080',
-        'webpack/hot/dev-server',
+        'webpack-hot-middleware/client?http://127.0.0.1:1616',
         './App.js'
     ],
     output: {
-        path: '/',
-        publicPath: 'http://localhost:8080/',
+        path: __dirname,
+        publicPath: '/',
         filename: 'app.js'
     },
-    // devServer: {
-    //     inline: true,
-    //     port: 9090
-    // },
     module: {
         loaders: [{
             test: /\.jsx?$/,
@@ -27,10 +21,9 @@ var config = {
         }]
     },
     plugins: [
-        new OpenBrowserPlugin({url: 'http://localhost:8080'}),
+        // new OpenBrowserPlugin({url: 'http://localhost:3000'}),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
-    ]
-}
-module.exports = config
+    ],
+};

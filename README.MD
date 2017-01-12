@@ -29,3 +29,10 @@
 *  通过connect的mapDispatchToProps参数把action绑定到props，state改变时渲染页面
 *(import { bindActionCreators }) from 'redux')*
 * [connect参数详解](http://cn.redux.js.org/docs/react-redux/api.html)
+
+###node中使用webpack
+* 运行服务器环境的同时运行本地环境。
+* [ webpack-dev-middleware](https://www.npmjs.com/package/webpack-dev-middleware) 和 [webpack-hot-middleware](https://www.npmjs.com/package/webpack-hot-middleware)
+* [webpack-hot-middleware示例代码下载地址](https://github.com/glenjamin/webpack-hot-middleware/tree/master/example)
+* open-browser-webpack-plugin插件的引入会导致，双服务器失败（暂未解决）
+* post 提交时，需引入"body-parser"插件进行解析
