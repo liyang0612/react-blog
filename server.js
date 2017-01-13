@@ -19,6 +19,7 @@ app.use(express.static('static'))
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html')
 })
+//读取数据
 app.get('/api', function (req, res) {
     fs.readFile('serverData.json', function (err, data) {
         if (err) console.log(err);
@@ -26,19 +27,37 @@ app.get('/api', function (req, res) {
         console.log("获取成功")
     })
 })
+//添加数据
 app.post('/api', function (req, res) {
     fs.readFile('serverData.json', function (err, data) {
+        if (err) console.log(err)
+        //获取原始数据
         var oldData = JSON.parse(data);
-        console.log(req.body.name, "请求主体")
-        res.json(JSON.parse(data));
-        // var newData = {
-        //     name: req.body.name,
-        // }
-        // oldData.push(newData)
-        // fs.write('serverData.json',JSON.stringify(oldData),function (err) {
-        //     if(err) console.log(err);
-        //     else console.log("写入成功")
-        // })
+        // console.log(req.body)
+        newDate = {
+            name: req.body.name,
+            password: req.body.password,
+            sex: req.body.sex
+        }
+        oldData.push(newDate);
+        //将新数据写入文件
+        fs.writeFile('serverData.json', JSON.stringify(oldData), function (err) {
+            if (err) console.log(err);
+            else console.log("写入成功")
+            res.end();
+        })
+    })
+})
+//删除数据
+app.post('/deleteApi', function (req, res) {
+    fs.readFile('serverData.json', function (err, data) {
+        if (err) console.log(err);
+        var newData = JSON.parse(data).splice(req.body.index, req.body.index + 1);
+        fs.writeFile('serverData.json', JSON.stringify(newData), function (err) {
+            if (err) console.log(err);
+            else console.log('删除成功');
+            res.end();
+        })
     })
 })
 //express + webpack

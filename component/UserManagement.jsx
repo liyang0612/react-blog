@@ -16,16 +16,14 @@ class App extends React.Component {
             this.props.deleteAction(index)
         else alert("密码错误")
     }
-
-    handleFetch() {
-      myAjax('POST','/api',function (data) {
-          console.log(data);
-      },{name: 18})
+    handleAjax () {
+        myAjax('post','/api',function (data) {
+            console.log(data)
+        },{name: "age",password: "a",sex:18})
     }
-
     render() {
         return <div>
-            <h1 onClick={this.handleFetch.bind(this)}>用户管理</h1>
+            <h1 onClick={this.handleAjax.bind(this)}>用户管理</h1>
             <div>
                 <Link to="addUser" className="btn btn-success"><i className="glyphicon glyphicon-user"></i> 添加新用户</Link>
             </div>

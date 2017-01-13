@@ -1,11 +1,22 @@
 import {ADDUSER, DELETEUSER, EDITUSER, INDEX} from './action'
 import {combineReducers} from 'redux'
-
-function add(state = [{name: "xxxxx", password: "123455", sex: "男", index: 1}], action) {
+import myAjax from '../myAjax'
+var a;
+myAjax('get', '/api', function (data) {
+    a = JSON.parse(data);
+}, {});
+function add(state = a, action) {
+    console.log(action.text)
     switch (action.type) {
         case ADDUSER:
+            myAjax('post', '/api', function () {
+                console.log('添加成功')
+            }, action.text)
             return [...state, action.text]
         case DELETEUSER:
+            myAjax('post', '/deleteApi', function () {
+                console.log('删除成功！')
+            }, {index: action.index})
             state.splice(action.index, 1)
             return [...state]
         //不可直接修改state
@@ -24,10 +35,10 @@ function add(state = [{name: "xxxxx", password: "123455", sex: "男", index: 1}]
     }
 }
 
-function index(state=[0],action) {
-    switch(action.type){
+function index(state = [0], action) {
+    switch (action.type) {
         case INDEX:
-            state.splice(0,1,action.index)
+            state.splice(0, 1, action.index)
             return [...state]
         default:
             return state
@@ -35,7 +46,7 @@ function index(state=[0],action) {
 }
 
 const addUer = combineReducers({
-    add,index
+    add, index
 })
 
 export default addUer
