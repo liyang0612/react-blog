@@ -19,7 +19,8 @@ class UserList extends React.Component {
                     <Link
                         to="editUser"
                         onClick={() => that.handleIndex(index)}
-                        className="btn btn-default">
+                        className="btn btn-default"
+                    >
                         编辑 <i className="glyphicon glyphicon-pencil"></i></Link>
                 </td>
                 <td>{val.name}</td>

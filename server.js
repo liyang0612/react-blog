@@ -37,7 +37,8 @@ app.post('/api', function (req, res) {
         newDate = {
             name: req.body.name,
             password: req.body.password,
-            sex: req.body.sex
+            sex: req.body.sex,
+            index: req.body.index
         }
         oldData.push(newDate);
         //将新数据写入文件
@@ -56,6 +57,23 @@ app.post('/deleteApi', function (req, res) {
         fs.writeFile('serverData.json', JSON.stringify(newData), function (err) {
             if (err) console.log(err);
             else console.log('删除成功');
+            res.end();
+        })
+    })
+})
+//编辑数据
+app.post('/editApi', function (req, res) {
+    fs.readFile('serverData.json', function (err, data) {
+        var oldData = JSON.parse(data), index = req.body.index;
+        var newData = {
+            name: req.body.name,
+            password: req.body.password,
+            sex: req.body.sex,
+            index: req.body.index
+        }
+        fs.writeFile('serverData.json', JSON.stringify(oldData), function (err) {
+            if (err) console.log(err);
+            else console.log('编辑成功')
             res.end();
         })
     })

@@ -31,12 +31,12 @@ class EditInfo extends React.Component {
             alert("信息填写不全");
         else if(password1!==password2)
             alert("两次密码不一致");
-        else this.props.editActon(objText);
+        else this.props.editActon(objText, this.props.index[0]);
     }
 
     render() {
         let info = this.props.info, index = this.props.index;
-        console.log(info, index)
+        console.log(info)
         return <from className="form-horizontal">
             <h2>修改用户信息</h2>
             <Link to="/" className="btn btn-default"><i className="glyphicon glyphicon-chevron-left"></i> 返回</Link>

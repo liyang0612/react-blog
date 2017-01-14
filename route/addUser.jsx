@@ -3,6 +3,7 @@ import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import {addUser} from '../redux/action'
 import {bindActionCreators} from 'redux'
+import myAjax from '../myAjax'
 
 class AddUser extends React.Component {
     constructor(props) {
@@ -20,17 +21,22 @@ class AddUser extends React.Component {
         var userName = this.refs.username.value,
             userPassword = this.refs.password.value,
             userSex = this.state.radioVal,
-            text = {
+            index;
+        myAjax('get', '/api', function (data) {
+            index = JSON.parse(data).length;
+        },{});
+        var text = {
             name: userName,
             password: userPassword,
-            sex: userSex
+            sex: userSex,
+            index: index
         };
         if (userName == "" || userPassword == "" || userSex == "") {
             alert("表单未填写完整");
             return false;
         } else {
             this.props.addAction(text)
-            this.refs.username.value=this.refs.password.value=""
+            this.refs.username.value = this.refs.password.value = ""
             alert("添加成功")
         }
     }

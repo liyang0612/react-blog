@@ -6,7 +6,6 @@ myAjax('get', '/api', function (data) {
     a = JSON.parse(data);
 }, {});
 function add(state = a, action) {
-    console.log(action.text)
     switch (action.type) {
         case ADDUSER:
             myAjax('post', '/api', function () {
@@ -27,8 +26,15 @@ function add(state = a, action) {
             let len = state.length;
             if (action.index != undefined)
                 state[len - 1].index = action.index;
-            if (action.text != undefined)
-                [...state.splice(state[len - 1].index, 1, action.text)]
+            if (action.text != undefined){
+                let text = action.text;
+                text.index = action.index;
+                console.log(text.name)
+                myAjax('post','/editApi',function () {
+                    console.log('编辑成功！')
+                },text);
+                [...state.splice(state[len - 1].index, 1, text)]
+            }
             return [...state]
         default :
             return state
