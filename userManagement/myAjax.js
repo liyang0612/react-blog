@@ -8,10 +8,11 @@ export default function myAjax(method, url, callback, data) {
             callback(xhr.responseText)
     }
     xhr.open(method, url, false);
-    if (method == "post" || method == "POST")
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    //参数解析，将对象解析为字符串
     var str = JSON.stringify(data);
-    str = str.replace(/[{}]/g, "").replace(/:/g, "=").replace(/,/g, "&").replace(/[""'']/g, "");
+    if (method == "post" || method == "POST") {
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        //参数解析，将对象解析为字符串
+        str = str.replace(/[{}]/g, "").replace(/:/g, "=").replace(/,/g, "&").replace(/[""'']/g, "");
+    }
     xhr.send(str)
 }

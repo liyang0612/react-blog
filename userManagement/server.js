@@ -10,7 +10,6 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 var bodyParser = require('body-parser')
 var app = express();
 
-
 //post中间件解析
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
