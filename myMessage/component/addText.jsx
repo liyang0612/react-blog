@@ -7,7 +7,7 @@ class AddText extends React.Component {
     handleSubmit() {
         var keyState = this.props.keyState,
             text = this.refs.text.value,
-            val = {text: text, key: keyState[keyState.length - 1].key + 1}
+            val = {text: text, key: parseInt(keyState[keyState.length - 1].key) + 1}
         this.props.addAction(val)
     }
 

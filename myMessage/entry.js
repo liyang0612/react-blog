@@ -7,6 +7,7 @@ import {Provider} from 'react-redux'
 import App from './App.jsx';
 
 var store = createStore(addtext)
-ReactDOM.render(<Provider store={store}>
-    <App />
-</Provider>, document.getElementById('app'))
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, document.getElementById('app'))

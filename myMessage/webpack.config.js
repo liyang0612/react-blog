@@ -1,8 +1,13 @@
+var webpack =require('webpack')
 var config = {
-    entry: './entry.js',
+    entry: [
+        'webpack-hot-middleware/client?http://127.0.0.1:7777',
+        './entry.js'
+    ],
 
     output: {
         path: __dirname,
+        publicPath: '/',
         filename: 'index.js',
     },
 
@@ -20,7 +25,12 @@ var config = {
                 presets: ['es2015', 'react']
             }
         }]
-    }
+    },
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ]
 
 }
 
