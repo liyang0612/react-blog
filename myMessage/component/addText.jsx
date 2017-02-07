@@ -7,8 +7,12 @@ class AddText extends React.Component {
     handleSubmit() {
         var keyState = this.props.keyState,
             text = this.refs.text.value,
-            val = {text: text, key: parseInt(keyState[keyState.length - 1].key) + 1}
-        this.props.addAction(val)
+            key,
+            keyLen = keyState.length;
+        (keyLen == 0) ? (key = 0) : key = parseInt(keyState[keyState.length - 1].key) + 1
+        var val = {text: text, key: key};
+        this.props.addAction(val);
+        this.refs.text.value = "";
     }
 
     render() {
@@ -16,7 +20,7 @@ class AddText extends React.Component {
             <div className="panel-body">
                 <form>
                     <div className="form-group">
-                        <textarea className="form-control" ref="text"></textarea>
+                        <textarea placeholder="说说你的看法" className="form-control" ref="text"></textarea>
                     </div>
                     <div className="form-group">
                         <input type="button" value="我要留言" className="btn btn-default"

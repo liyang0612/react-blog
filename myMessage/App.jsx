@@ -2,7 +2,6 @@ import React from 'react';
 import Message from './component/message.jsx'
 import AddText from './component/addText.jsx'
 import {connect} from 'react-redux'
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +9,6 @@ class App extends React.Component {
             text: ""
         }
     }
-
     render() {
         return (
             <div className="container">
