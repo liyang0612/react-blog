@@ -2,7 +2,7 @@ var webpack =require('webpack')
 var config = {
     entry: [
         'webpack-hot-middleware/client?http://127.0.0.1:7777',
-        './entry.js'
+        './main.js'
     ],
 
     output: {

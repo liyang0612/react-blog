@@ -9,7 +9,7 @@ class AddText extends React.Component {
             text = this.refs.text.value,
             key,
             keyLen = keyState.length;
-        (keyLen == 0) ? (key = 0) : key = parseInt(keyState[keyState.length - 1].key) + 1
+        (keyLen == 0) ? (key = 0) : (key = parseInt(keyState[keyState.length - 1].key) + 1);
         var val = {text: text, key: key};
         this.props.addAction(val);
         this.refs.text.value = "";

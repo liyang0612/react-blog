@@ -1,4 +1,4 @@
-var mongoose = require('mongoose'),
+var text = require('./db'),
     express = require('express'),
     bodyParser = require('body-parser'),
     webpack = require('webpack'),
@@ -6,19 +6,6 @@ var mongoose = require('mongoose'),
     webpackDevMiddleware = require('webpack-dev-middleware'),
     webpackHotMiddleware = require('webpack-hot-middleware');
 var app = express();
-//数据库连接
-var db = mongoose.connect('mongodb://127.0.0.1:27017/message');
-db.connection.on('open', function () {
-    console.log("-----数据库连接成功！------")
-})
-//建立骨架模型
-var Schema = mongoose.Schema;
-var userText = new Schema({
-    text: String,
-    key: String
-})
-//留言数据模型entity
-var text = mongoose.model('text', userText);
 //post解析
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
