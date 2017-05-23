@@ -1,5 +1,5 @@
 import React from 'react'
-import {addText} from '../action/action'
+import {addText} from '../../action/action'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 

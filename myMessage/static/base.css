@@ -2,3 +2,10 @@
     margin: 20px 0 0;
     text-indent: 30px;
 }
+.home-banner{
+    background: thistle;
+    height: 460px;
+}
+.home-banner a {
+    cursor: pointer;
+}
