@@ -1,19 +1,17 @@
 var webpack =require('webpack')
 var config = {
     entry: [
-        'webpack-hot-middleware/client?http://127.0.0.1:7777',
         './main.js'
     ],
 
     output: {
-        path: __dirname,
+        path: __dirname + '/',
         publicPath: '/',
         filename: 'index.js',
     },
 
     devServer: {
-        inline: true,
-        port: 7777
+
     },
 
     module: {

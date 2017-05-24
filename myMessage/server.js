@@ -50,9 +50,10 @@ app.post('/deleteapi', function (req, res) {
 
 //webpack加载
 var compiler = webpack(config);
+config.entry.unshift("webpack-hot-middleware/client?reload=true?http://127.0.0.1:7777/");
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
 }))
 app.use(webpackHotMiddleware(compiler))
-app.listen(7777)
+app.listen(7777);

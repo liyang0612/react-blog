@@ -3,9 +3,10 @@
     text-indent: 30px;
 }
 .home-banner{
-    background: thistle;
+    background: #333;
     height: 460px;
 }
 .home-banner a {
     cursor: pointer;
+    color: #fff;
 }
