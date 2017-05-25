@@ -1,4 +1,5 @@
-var webpack =require('webpack')
+var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: [
         './main.js'
@@ -11,21 +12,34 @@ var config = {
     },
 
     devServer: {
-
+        hot: true,
+        inline: true
     },
 
     module: {
-        loaders: [ {
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['es2015', 'react']
-            }
-        }]
+        rules: [
+            {
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['es2015', 'react']
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: ['css-loader', 'sass-loader']
+                })
+            },]
+
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
+        // new webpack.optimize.OccurenceOrderPlugin(),
+        new ExtractTextPlugin('./static/base.css'),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ]

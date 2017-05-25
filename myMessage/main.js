@@ -6,6 +6,7 @@ import addtext from './reducer/renducer'
 import {Provider} from 'react-redux'
 import App from './App.jsx';
 import MessageMain from './component/message/messageMain.jsx'
+import './static/base.scss'
 
 var store = createStore(addtext)
 ReactDOM.render(
