@@ -1,13 +1,35 @@
+body {
+  font-family: 'Microsoft YaHei UI Light'; }
+
 .message-text {
   margin: 20px 0 0;
   text-indent: 30px; }
 
-.home-banner {
-  background: #333;
-  height: 460px; }
+.blog-nav ul {
+  padding: 0;
+  line-height: 50px; }
+  .blog-nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+    list-style: none; }
+    .blog-nav ul li a {
+      color: #333;
+      cursor: pointer; }
+      .blog-nav ul li a:hover {
+        color: #999;
+        text-decoration: none; }
 
-.home-banner a {
-  cursor: pointer;
-  color: #fff; }
+.blog-list-box {
+  width: 800px;
+  margin: 0 auto;
+  padding: 0 0 50px;
+  border-bottom: solid 1px #f0f0f0; }
+  .blog-list-box h3, .blog-list-box p {
+    text-align: center; }
+  .blog-list-box .bolg-list-text, .blog-list-box a {
+    text-align: left; }
+  .blog-list-box a {
+    cursor: pointer;
+    text-decoration: none; }
 
 /*# sourceMappingURL=base.css.map */
