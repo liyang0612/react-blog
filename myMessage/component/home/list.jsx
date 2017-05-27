@@ -12,7 +12,7 @@ class List extends React.Component {
                             <div className="blog-list-text">
                                 这里是部分文章内容
                             </div>
-                            <Link>more...</Link>
+                            <Link to="/detail">more...</Link>
                         </div>
                     </div>
                 </div>
