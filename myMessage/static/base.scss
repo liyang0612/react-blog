@@ -73,3 +73,12 @@ body{
     padding: 50px 0 0;
   }
 }
+
+//common
+$color-333: #333;
+.blog-a-color {
+  color: $color-333;
+}
+.blog-container {
+  padding-top: 50px;
+}

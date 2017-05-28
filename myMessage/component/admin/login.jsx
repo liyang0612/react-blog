@@ -1,5 +1,6 @@
 import React from 'react'
-class Login extends React.Component {
+import { hashHistory  } from 'react-router'
+class Login extends React.Component{
     render() {
         return (
             <div className="blog-login-wrap">
@@ -13,7 +14,10 @@ class Login extends React.Component {
                             <label>密码：</label>
                             <input type="password" className="form-control" placeholder="请输入密码"/>
                         </div>
-                        <div className="text-center"><button type="submit" className="btn btn-default">登录</button></div>
+                        <div className="text-center">
+                            <button type="submit" className="btn btn-default"
+                                    onClick={() => hashHistory.push('/admin')}>登录</button>
+                        </div>
                     </form>
                 </div>
             </div>

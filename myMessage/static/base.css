@@ -60,4 +60,10 @@ body {
   .blog-login-wrap form {
     padding: 50px 0 0; }
 
+.blog-a-color {
+  color: #333; }
+
+.blog-container {
+  padding-top: 50px; }
+
 /*# sourceMappingURL=base.css.map */
