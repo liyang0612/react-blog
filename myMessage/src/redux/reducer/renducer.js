@@ -1,6 +1,6 @@
 import {ADDTEXT} from '../action/action'
 import {DELETETEXT} from '../action/action'
-import myAjax from '../ajax'
+import myAjax from '../../ajax'
 
 var startState;
 //获取数据

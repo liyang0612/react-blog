@@ -1,4 +1,4 @@
-var text = require('./db'),
+var text = require('./db/db'),
     path = require('path'),
     express = require('express'),
     bodyParser = require('body-parser'),
@@ -11,7 +11,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 //静态文件目录
-app.use(express.static('static'))
+app.use(express.static('src/static'))
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'))
 })

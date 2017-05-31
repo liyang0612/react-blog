@@ -6,8 +6,9 @@ class AdminHom extends React.Component {
             <div className="container">
                 <nav className="collapse navbar-collapse">
                     <ul className="nav navbar-nav">
+                        <li><Link to="/admin" className="blog-a-color">后台首页</Link></li>
                         <li><Link to="/admin/add" className="blog-a-color">添加文章</Link></li>
-                        <li><a className="blog-a-color">后台管理</a></li>
+                        <li><Link to="/" className="blog-a-color">留言管理</Link></li>
                     </ul>
                 </nav>
                 <section className="container-fluid">

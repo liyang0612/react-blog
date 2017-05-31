@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
-import { deleteText } from '../../action/action'
+import { deleteText } from '../../redux/action/action'
 
 class Message extends React.Component {
     handleDelete(key) {

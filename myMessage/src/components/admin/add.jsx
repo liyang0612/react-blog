@@ -3,7 +3,7 @@ import React from 'react'
 class add extends React.Component {
     render() {
         return (
-            <div className="container blog-container">
+            <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="bs-docs-section blog-detail-box">

@@ -66,4 +66,7 @@ body {
 .blog-container {
   padding-top: 50px; }
 
+tr > td > .btn-sm {
+  margin-right: 5px; }
+
 /*# sourceMappingURL=base.css.map */
