@@ -1,4 +1,9 @@
-## react-DEMO示例目录
+## react + node 博客（未完待续...）
 
-### 【 myMessage 】：留言版
-- 使用react + redux + node + mongodb + webpack写的一个小Demo
+### react+redux 和 express+mongodb
+
+[mongodb快速安装启动](http://www.runoob.com/mongodb/mongodb-window-install.html)
+
+### 注意事项
+- webpack2.0
+- 先安装启动mongodb,然后在npm start
