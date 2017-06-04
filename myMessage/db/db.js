@@ -11,8 +11,17 @@ var userText = new Schema({
     text: String,
     key: String
 });
+var articleSchema = new Schema({
+    title: String,
+    content: String
+})
 
 //留言数据模型entity
-var text = mongoose.model('text', userText);
+var text = mongoose.model('text', userText); //用户留言表
+var article = mongoose.model('article', articleSchema); //文章管理表
 
-module.exports = text;
+var dbObject = {
+    "text": text,
+    "article": article,
+}
+module.exports = dbObject;

@@ -8,6 +8,9 @@ class App extends React.Component {
                     <div className="text-center blog-nav">
                         <ul>
                             <li>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li>
                                 <a>About</a>
                             </li>
                             <li>
