@@ -1,21 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router'
+import ajax from '../../ajax'
 class List extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            article: []
+        };
+    }
+    componentDidMount() {
+        ajax('get', '/getArticle', (data) => {
+            this.setState({
+                article: JSON.parse(data)
+            })
+        })
+    }
     render() {
-        return (
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="bs-docs-section">
-                        <div className="blog-list-box">
-                            <h3>这是文章列表标题</h3>
-                            <p>这里是日期</p>
-                            <div className="blog-list-text">
-                                这里是部分文章内容
-                            </div>
-                            <Link to="/detail">more...</Link>
+        let listItem = this.state.article.map(val => {
+            return <div className="col-md-12" key={val._id}>
+                <div className="bs-docs-section">
+                    <div className="blog-list-box">
+                        <h3>{val.title}</h3>
+                        <p>{val.date}</p>
+                        <div className="blog-list-text">
+                            {val.content}
                         </div>
+                        <Link to="/detail">more...</Link>
                     </div>
                 </div>
+            </div>
+        })
+        return (
+            <div className="row">
+                {listItem}
             </div>
         )
     }

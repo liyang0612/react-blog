@@ -13,7 +13,8 @@ var userText = new Schema({
 });
 var articleSchema = new Schema({
     title: String,
-    content: String
+    content: String,
+    date: String
 })
 
 //留言数据模型entity

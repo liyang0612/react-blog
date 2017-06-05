@@ -1,7 +1,15 @@
 import React from 'react'
+import ajax from '../../ajax'
 
 class add extends React.Component {
     render() {
+        ajax('post', '/addArticle', function (data) {
+
+        },{
+            "title": "这是文章列表标题",
+            "content": '这里是部分文章内容',
+            "date": "这里是日期"
+        })
         return (
             <div className="container">
                 <div className="row">

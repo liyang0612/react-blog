@@ -39,4 +39,27 @@ app.post('/deleteapi', function (req, res) {
     })
 })
 
+app.post('/addArticle', function (req, res) {
+    var addArticle = new dbObject.article(req.body);
+    addArticle.save(function (err, doc) {
+        if(err){
+            console.log(err)
+        }else {
+            // console.log("文章发表成功" + doc);
+            res.json(doc)
+        }
+        res.end();
+    })
+})
+app.get('/getArticle', function (req, res) {
+    dbObject.article.find(function (err, doc) {
+        if(err){
+            console.log(err)
+        }else{
+            res.json(doc)
+            console.log("文章列表获取成功")
+        }
+    })
+})
+
 module.exports = app;
