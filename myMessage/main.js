@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import router from './src/router'
 import './src/static/base.scss'
 
-var store = createStore(addtext)
+var store = createStore(addtext);
 ReactDOM.render(
     <Provider store={store}>
         {router}

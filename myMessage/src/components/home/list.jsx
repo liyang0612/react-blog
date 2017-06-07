@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import ajax from '../../ajax'
+import axios from 'axios'
 class List extends React.Component {
     constructor(props) {
         super(props);
@@ -9,10 +9,17 @@ class List extends React.Component {
         };
     }
     componentDidMount() {
-        ajax('get', '/getArticle', (data) => {
+        axios({
+            method: 'get',
+            url: '/getArticle',
+            params: {
+            }
+        }).then(res => {
             this.setState({
-                article: JSON.parse(data)
+                article: res.data
             })
+        }).catch(err => {
+            console.log(err)
         })
     }
     render() {
