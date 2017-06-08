@@ -1,15 +1,37 @@
 import React from 'react'
 import ajax from '../../ajax'
+import axios from 'axios'
 
 class add extends React.Component {
-    render() {
-        ajax('post', '/addArticle', function (data) {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: '',
+            content: '',
+        }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-        },{
-            "title": "这是文章列表标题",
-            "content": '这里是部分文章内容',
-            "date": "这里是日期"
+    handleInputChange(event) {
+        const target = event.target;
+        const name = target.name;
+        this.setState({
+            [name]: target.value
+        });
+    }
+
+    handleSubmit() {
+        axios.post('/addArticle', {
+            title: this.state.title,
+            content: this.state.content,
+            date: (new Date()).toLocaleDateString()
+        }).then(res => {
+            console.log(res.data)
         })
+    }
+
+    render() {
         return (
             <div className="container">
                 <div className="row">
@@ -17,14 +39,16 @@ class add extends React.Component {
                         <div className="bs-docs-section blog-detail-box">
                             <div className="form-group">
                                 <label>标题：</label>
-                                <input type="text" className="form-control" placeholder="Text input"/>
+                                <input name="title" type="text" className="form-control" placeholder="Text input"
+                                       onChange={this.handleInputChange}/>
                             </div>
                             <div className="form-group">
                                 <label>内容：</label>
-                                <textarea className="form-control" rows="15"></textarea>
+                                <textarea name="content" className="form-control" rows="15"
+                                          onChange={this.handleInputChange}></textarea>
                             </div>
                             <div className="form-group">
-                                <button className="btn btn-default">发表</button>
+                                <button className="btn btn-default" onClick={this.handleSubmit}>发表</button>
                             </div>
                         </div>
                     </div>

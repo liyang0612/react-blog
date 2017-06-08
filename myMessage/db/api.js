@@ -45,7 +45,6 @@ app.post('/addArticle', function (req, res) {
         if(err){
             console.log(err)
         }else {
-            // console.log("文章发表成功" + doc);
             res.json(doc)
         }
         res.end();
