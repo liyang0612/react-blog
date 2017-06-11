@@ -25,7 +25,7 @@ class add extends React.Component {
         axios.post('/addArticle', {
             title: this.state.title,
             content: this.state.content,
-            date: (new Date()).toLocaleDateString()
+            date: (new Date()).toLocaleString()
         }).then(res => {
             console.log(res.data)
         })

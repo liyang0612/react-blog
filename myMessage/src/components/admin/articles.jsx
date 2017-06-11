@@ -1,13 +1,27 @@
 import React from 'react'
+import axios from 'axios'
 
-const articlesData = [
-    {id: "1", title: "标题1", date: '2017-02-03'},
-    {id: "2", title: "标题2", date: '2017-05-08'}
-    ]
 class Articles extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            articlesData: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get('/getArticle').then(res => {
+            this.setState({
+                articlesData: res.data
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
     render() {
-        let listItems = articlesData.map((item) => {
-            return <tr key={item.id}>
+        var listItems = this.state.articlesData.map((item) => {
+            return <tr key={item._id}>
                 <td>{item.id}</td>
                 <td>{item.title}</td>
                 <td>{item.date}</td>
@@ -17,16 +31,16 @@ class Articles extends React.Component {
                 </td>
             </tr>
         })
-        return(
+        return (
             <div className="container-fluid">
                 <table className="table table-striped">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>文章标题</th>
-                            <th>时间</th>
-                            <th>操作</th>
-                        </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>文章标题</th>
+                        <th>时间</th>
+                        <th>操作</th>
+                    </tr>
                     </thead>
                     <tbody>
                     {listItems}
