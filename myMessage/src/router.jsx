@@ -21,6 +21,7 @@ export default (
         <Route path="/admin" component={Admin}>
             <IndexRoute component={Articles}/>
             <Route path="/admin/add" component={Add}/>
+            <Route path="/admin/update" component={Add}/>
         </Route>
     </Router>
 )

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import axios from 'axios'
 
 class Articles extends React.Component {
@@ -18,16 +19,26 @@ class Articles extends React.Component {
             console.log(err)
         })
     }
-
+    handleDelete(id, index) {
+        axios.post('/deleteArticle', {
+            articleId: id
+        }).then(res => {
+            let listItem = this.state.articlesData;
+            listItem.splice(index, 1);
+            this.setState({
+                articlesData: listItem
+            })
+        })
+    }
     render() {
-        var listItems = this.state.articlesData.map((item) => {
+        var listItems = this.state.articlesData.map((item, index) => {
             return <tr key={item._id}>
                 <td>{item.id}</td>
                 <td>{item.title}</td>
                 <td>{item.date}</td>
                 <td>
-                    <button className="btn btn-default btn-sm">编辑</button>
-                    <button className="btn btn-default btn-sm">删除</button>
+                    <Link to="/admin/update" className="btn btn-default btn-sm">编辑</Link>
+                    <button className="btn btn-default btn-sm" onClick={() => this.handleDelete(item.articleId, index)}>删除</button>
                 </td>
             </tr>
         })

@@ -12,6 +12,7 @@ var userText = new Schema({
     key: String
 });
 var articleSchema = new Schema({
+    articleId: String,
     title: String,
     content: String,
     date: String

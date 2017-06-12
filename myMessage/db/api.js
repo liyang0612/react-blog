@@ -40,6 +40,7 @@ app.post('/deleteapi', function (req, res) {
 })
 
 app.post('/addArticle', function (req, res) {
+    req.body.articleId = Math.random().toString(36).substr(2);
     var addArticle = new dbObject.article(req.body);
     addArticle.save(function (err, doc) {
         if(err){
@@ -60,5 +61,16 @@ app.get('/getArticle', function (req, res) {
         }
     })
 })
+app.post('/deleteArticle', function (req, res) {
+    dbObject.article.remove(req.body, function (err, doc) {
+        if(err){
+            console.log(err)
+        }else{
+            res.json(doc)
+            res.end();
+        }
+    })
+})
+//insert
 
 module.exports = app;

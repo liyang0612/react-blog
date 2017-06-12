@@ -1,5 +1,5 @@
 import React from 'react'
-import ajax from '../../ajax'
+import { hashHistory } from 'react-router'
 import axios from 'axios'
 
 class add extends React.Component {
@@ -11,6 +11,15 @@ class add extends React.Component {
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        if(this.props.title && this.props.content){
+            this.setState({
+                title: this.props.title,
+                content: this.props.content
+            })
+        }
     }
 
     handleInputChange(event) {
@@ -27,7 +36,8 @@ class add extends React.Component {
             content: this.state.content,
             date: (new Date()).toLocaleString()
         }).then(res => {
-            console.log(res.data)
+            console.log(res.data);
+	        hashHistory.push("/admin");
         })
     }
 
@@ -40,12 +50,12 @@ class add extends React.Component {
                             <div className="form-group">
                                 <label>标题：</label>
                                 <input name="title" type="text" className="form-control" placeholder="Text input"
-                                       onChange={this.handleInputChange}/>
+                                       onChange={this.handleInputChange} defaultValue={this.state.title}/>
                             </div>
                             <div className="form-group">
                                 <label>内容：</label>
                                 <textarea name="content" className="form-control" rows="15"
-                                          onChange={this.handleInputChange}></textarea>
+                                          onChange={this.handleInputChange}  defaultValue={this.state.content}></textarea>
                             </div>
                             <div className="form-group">
                                 <button className="btn btn-default" onClick={this.handleSubmit}>发表</button>
