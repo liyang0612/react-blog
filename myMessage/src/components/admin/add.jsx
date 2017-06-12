@@ -1,5 +1,6 @@
 import React from 'react'
 import { hashHistory } from 'react-router'
+import {connect} from 'react-redux'
 import axios from 'axios'
 
 class add extends React.Component {
@@ -13,11 +14,12 @@ class add extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        if(this.props.title && this.props.content){
+	componentWillMount() {
+        let articleUpdate = this.props.articleUpdate;
+        if(articleUpdate.length){
             this.setState({
-                title: this.props.title,
-                content: this.props.content
+                title: articleUpdate[0].title,
+                content: articleUpdate[0].content
             })
         }
     }
@@ -50,12 +52,14 @@ class add extends React.Component {
                             <div className="form-group">
                                 <label>标题：</label>
                                 <input name="title" type="text" className="form-control" placeholder="Text input"
-                                       onChange={this.handleInputChange} defaultValue={this.state.title}/>
+                                       onChange={this.handleInputChange}
+                                       defaultValue={this.state.title}/>
                             </div>
                             <div className="form-group">
                                 <label>内容：</label>
                                 <textarea name="content" className="form-control" rows="15"
-                                          onChange={this.handleInputChange}  defaultValue={this.state.content}></textarea>
+                                          onChange={this.handleInputChange}
+                                          defaultValue={this.state.content}></textarea>
                             </div>
                             <div className="form-group">
                                 <button className="btn btn-default" onClick={this.handleSubmit}>发表</button>
@@ -68,4 +72,10 @@ class add extends React.Component {
     }
 }
 
-export default add
+function mapStateToProps(state) {
+	return {
+		articleUpdate: state.articleUpdate
+	}
+}
+
+export default connect(mapStateToProps)(add)

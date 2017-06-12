@@ -27,7 +27,7 @@ class MessageMain extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		texts: state
+		texts: state.message
 	}
 }
 

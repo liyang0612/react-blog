@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import { articleUpdate } from '../../redux/action/action'
 import axios from 'axios'
 
 class Articles extends React.Component {
@@ -30,6 +33,12 @@ class Articles extends React.Component {
             })
         })
     }
+    handleUpate() {
+        this.props.articleUpdate({
+            title: '1',
+            content: '123'
+        })
+    }
     render() {
         var listItems = this.state.articlesData.map((item, index) => {
             return <tr key={item._id}>
@@ -37,7 +46,10 @@ class Articles extends React.Component {
                 <td>{item.title}</td>
                 <td>{item.date}</td>
                 <td>
-                    <Link to="/admin/update" className="btn btn-default btn-sm">编辑</Link>
+                    <Link
+                        to="/admin/update"
+                        className="btn btn-default btn-sm"
+                        onClick={() => this.handleUpate()}>编辑</Link>
                     <button className="btn btn-default btn-sm" onClick={() => this.handleDelete(item.articleId, index)}>删除</button>
                 </td>
             </tr>
@@ -62,4 +74,10 @@ class Articles extends React.Component {
     }
 }
 
-export default Articles
+function mapDispatchToProps(dispatch) {
+    return {
+        articleUpdate: bindActionCreators(articleUpdate, dispatch)
+    }
+}
+
+export default connect("",mapDispatchToProps)(Articles)

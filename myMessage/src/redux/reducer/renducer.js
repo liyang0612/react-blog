@@ -1,5 +1,5 @@
-import {ADDTEXT} from '../action/action'
-import {DELETETEXT} from '../action/action'
+import * as types from '../action/action'
+import { combineReducers } from 'redux';
 import myAjax from '../../ajax'
 
 var startState;
@@ -7,14 +7,14 @@ var startState;
 myAjax('GET', '/getapi', function (data) {
     startState = JSON.parse(data)
 })
-function addText(state = startState, action) {
+function message(state = startState, action) {
     switch (action.type) {
-        case ADDTEXT:
+        case types.ADDTEXT:
             myAjax('post', '/addapi', function (data) {
                 
             }, action.text)
             return [...state, action.text]
-        case DELETETEXT:
+        case types.DELETETEXT:
             state.forEach(function (val, index) {
                 if (val.key == action.text) {
                     myAjax('POST', '/deleteapi', function (data) {
@@ -29,4 +29,19 @@ function addText(state = startState, action) {
     }
 }
 
-export default addText
+function articleUpdate(state = {}, action) {
+    switch (action.type) {
+        case types.ARTICLEUPDATE:
+            console.log("success")
+            return [...state, action.text];
+        default :
+            return state;
+    }
+}
+
+const blogState = combineReducers({
+    message,
+	articleUpdate
+    })
+
+export default blogState
