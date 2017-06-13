@@ -23,17 +23,15 @@ app.post('/addapi', function (req, res) {
         if (err)
             console.log(err)
         else
-            console.log("添加成功" + doc)
-        res.end()
+            res.end()
     })
 })
 //删除数据
 app.post('/deleteapi', function (req, res) {
     dbObject.text.remove(req.body, function (err) {
         if(err)
-            console.log("error" + err)
+            console.log("error" + err);
         else{
-            console.log("删除成功！")
             res.end();
         }
     })
@@ -44,9 +42,9 @@ app.post('/addArticle', function (req, res) {
     var addArticle = new dbObject.article(req.body);
     addArticle.save(function (err, doc) {
         if(err){
-            console.log(err)
+            console.log(err);
         }else {
-            res.json(doc)
+            res.json(doc);
         }
         res.end();
     })
@@ -56,8 +54,7 @@ app.get('/getArticle', function (req, res) {
         if(err){
             console.log(err)
         }else{
-            res.json(doc)
-            console.log("文章列表获取成功")
+            res.json(doc);
         }
     })
 })
