@@ -33,14 +33,22 @@ class add extends React.Component {
     }
 
     handleSubmit() {
-        axios.post('/addArticle', {
-            title: this.state.title,
-            content: this.state.content,
-            date: (new Date()).toLocaleString()
-        }).then(res => {
-            console.log(res.data);
-	        hashHistory.push("/admin");
-        })
+        if(this.props.articleUpdate.length){
+            axios.post('/insertArticle', {
+                title: this.state.title,
+            }).then(res => {
+                console.log(2342)
+            })
+        }else{
+            axios.post('/addArticle', {
+                title: this.state.title,
+                content: this.state.content,
+                date: (new Date()).toLocaleString()
+            }).then(res => {
+                console.log(res.data);
+                hashHistory.push("/admin");
+            })
+        }
     }
 
     render() {

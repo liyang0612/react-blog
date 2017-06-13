@@ -37,6 +37,7 @@ app.post('/deleteapi', function (req, res) {
     })
 })
 
+//博客文章模块
 app.post('/addArticle', function (req, res) {
     req.body.articleId = Math.random().toString(36).substr(2);
     var addArticle = new dbObject.article(req.body);
@@ -61,11 +62,21 @@ app.get('/getArticle', function (req, res) {
 app.post('/deleteArticle', function (req, res) {
     dbObject.article.remove(req.body, function (err, doc) {
         if(err){
-            console.log(err)
+            console.log(err);
         }else{
             res.json(doc)
             res.end();
         }
+    })
+})
+app.post('/insertArticle', function(req, res) {
+    dbObject.article.update(req.body, { $set: { title: '234'}},{safe: true}, function(error) {
+        if(error){
+            console.log(error)
+        }else{
+            console.log("update success")
+        }
+        res.end()
     })
 })
 //insert
