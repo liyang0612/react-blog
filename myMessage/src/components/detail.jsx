@@ -1,5 +1,23 @@
 import React from 'react'
+import axios from 'axios'
 class Detail extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: '',
+            content: '',
+            date: '',
+        }
+    }
+    componentWillMount() {
+        axios('/getArticle').then(res => {
+            this.setState({
+                title: res.data[0].title,
+                content: res.data[0].content,
+                date: res.data[0].date
+            })
+        })
+    }
     render() {
         return (
             <div className="container-fluid">
@@ -7,10 +25,10 @@ class Detail extends React.Component {
                     <div className="col-md-12">
                         <div className="bs-docs-section blog-detail-box">
                             <div className="blog-list-box">
-                                <h3>这是文章列表标题</h3>
-                                <p>这里是日期</p>
+                                <h3>{this.state.title}</h3>
+                                <p>{this.state.date}</p>
                                 <div className="blog-list-text">
-                                    这里是文章内容
+                                    {this.state.content}
                                 </div>
                             </div>
                         </div>

@@ -33,7 +33,7 @@ function articleUpdate(state = {}, action) {
     switch (action.type) {
         case types.ARTICLEUPDATE:
             console.log("success")
-            return [...state, action.text];
+            return [action.text];
         default :
             return state;
     }

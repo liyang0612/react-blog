@@ -70,7 +70,7 @@ app.post('/deleteArticle', function (req, res) {
     })
 })
 app.post('/insertArticle', function(req, res) {
-    dbObject.article.update(req.body, { $set: { title: '234'}},{safe: true}, function(error) {
+    dbObject.article.update({articleId: req.body.articleId}, { $set: req.body},{safe: true}, function(error) {
         if(error){
             console.log(error)
         }else{

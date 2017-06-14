@@ -33,10 +33,12 @@ class Articles extends React.Component {
             })
         })
     }
-    handleUpate() {
+    handleUpate(title, content, articleId) {
+        console.log(title, content, articleId)
         this.props.articleUpdate({
-            title: '1',
-            content: '123'
+            title: title,
+            content: content,
+            articleId: articleId
         })
     }
     render() {
@@ -49,8 +51,9 @@ class Articles extends React.Component {
                     <Link
                         to="/admin/update"
                         className="btn btn-default btn-sm"
-                        onClick={() => this.handleUpate()}>编辑</Link>
-                    <button className="btn btn-default btn-sm" onClick={() => this.handleDelete(item.articleId, index)}>删除</button>
+                        onClick={() => this.handleUpate(item.title, item.content, item.articleId)}>编辑</Link>
+                    <button className="btn btn-default btn-sm" 
+                    onClick={() => this.handleDelete(item.articleId, index)}>删除</button>
                 </td>
             </tr>
         })

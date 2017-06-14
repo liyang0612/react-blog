@@ -1,6 +1,8 @@
 import React from 'react'
 import { hashHistory } from 'react-router'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import { articleUpdate } from '../../redux/action/action'
 import axios from 'axios'
 
 class add extends React.Component {
@@ -24,6 +26,11 @@ class add extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        console.log("likai")
+        this.props.articleUpdateAction({});
+    }
+
     handleInputChange(event) {
         const target = event.target;
         const name = target.name;
@@ -34,10 +41,14 @@ class add extends React.Component {
 
     handleSubmit() {
         if(this.props.articleUpdate.length){
+            let articleUpdate = this.props.articleUpdate;
             axios.post('/insertArticle', {
+                articleId: articleUpdate[0].articleId,
                 title: this.state.title,
+                content: this.state.content,
+                date: (new Date).toLocaleString()
             }).then(res => {
-                console.log(2342)
+
             })
         }else{
             axios.post('/addArticle', {
@@ -46,12 +57,18 @@ class add extends React.Component {
                 date: (new Date()).toLocaleString()
             }).then(res => {
                 console.log(res.data);
-                hashHistory.push("/admin");
             })
         }
+        hashHistory.push("/admin");
     }
 
     render() {
+        let btn = "";
+        if(this.props.articleUpdate[0].articleId){
+            btn = "保存编辑";
+        }else{
+            btn = "发表"
+        }
         return (
             <div className="container">
                 <div className="row">
@@ -70,7 +87,7 @@ class add extends React.Component {
                                           defaultValue={this.state.content}></textarea>
                             </div>
                             <div className="form-group">
-                                <button className="btn btn-default" onClick={this.handleSubmit}>发表</button>
+                                <button className="btn btn-default" onClick={this.handleSubmit}>{btn}</button>
                             </div>
                         </div>
                     </div>
@@ -86,4 +103,10 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(add)
+function mapDispatchToProps(dispatch) {
+    return {
+        articleUpdateAction: bindActionCreators(articleUpdate, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(add)
