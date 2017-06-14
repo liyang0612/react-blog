@@ -27,7 +27,6 @@ class add extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log("likai")
         this.props.articleUpdateAction({});
     }
 
@@ -40,7 +39,7 @@ class add extends React.Component {
     }
 
     handleSubmit() {
-        if(this.props.articleUpdate.length){
+        if(this.props.articleUpdate[0].articleId){
             let articleUpdate = this.props.articleUpdate;
             axios.post('/insertArticle', {
                 articleId: articleUpdate[0].articleId,
@@ -63,12 +62,6 @@ class add extends React.Component {
     }
 
     render() {
-        let btn = "";
-        if(this.props.articleUpdate[0].articleId){
-            btn = "保存编辑";
-        }else{
-            btn = "发表"
-        }
         return (
             <div className="container">
                 <div className="row">
@@ -87,7 +80,7 @@ class add extends React.Component {
                                           defaultValue={this.state.content}></textarea>
                             </div>
                             <div className="form-group">
-                                <button className="btn btn-default" onClick={this.handleSubmit}>{btn}</button>
+                                <button className="btn btn-default" onClick={this.handleSubmit}>发表</button>
                             </div>
                         </div>
                     </div>

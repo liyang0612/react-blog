@@ -79,6 +79,7 @@ app.post('/insertArticle', function(req, res) {
         res.end()
     })
 })
-//insert
+
+// 用户信息模块
 
 module.exports = app;
