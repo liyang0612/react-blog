@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 //数据库连接
 var db = mongoose.connect('mongodb://127.0.0.1:27017/message');
 db.connection.on('open', function () {
-    console.log("-----数据库连接成功！------")
+    console.log("-----数据库连接成功！------");
 })
 //建立骨架模型
 var Schema = mongoose.Schema;
@@ -20,7 +20,6 @@ var articleSchema = new Schema({
 var userInfoSchema = new Schema({
 	userName: String,
 	password: String,
-	token: String,
 })
 
 //留言数据模型entity
@@ -34,4 +33,23 @@ var dbObject = {
     "article": article,
     "userInfo": userInfo
 }
+
+userInfo = new dbObject.userInfo({userName: "liyang", password: "123"});
+dbObject.userInfo.find(function (err, doc) {
+    if(err){
+        console.log(err)
+    }else{
+        // console.log(doc.userName)
+        if(!doc[0].userName){
+            userInfo.save(function (sErr, sDoc) {
+                if(sErr){
+                    console.log(sErr)
+                }else {
+                    console.log(sDoc)
+                }
+            })
+        }
+    }
+})
+
 module.exports = dbObject;
