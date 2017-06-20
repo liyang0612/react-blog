@@ -80,6 +80,20 @@ app.post('/insertArticle', function(req, res) {
     })
 })
 
-// 用户信息模块
+// 用户登录
+app.post('/login', function(req, res) {
+    dbObject.userInfo.find(function (err, doc) {
+        if(err){
+            console.log(err);
+            res.json({"status": "-1", "msg": "服务器内部错误"})
+        }else{
+            if(req.body.userName == doc[0].userName && req.body.password == doc[0].password){
+                res.json({"status": "1","token": "login_success"})
+            }else{
+                res.json({"status": "0", "msg": "用户名或者密码错误！"})
+            }
+        }
+    })
+})
 
 module.exports = app;

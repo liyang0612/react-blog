@@ -39,8 +39,8 @@ dbObject.userInfo.find(function (err, doc) {
     if(err){
         console.log(err)
     }else{
-        // console.log(doc.userName)
-        if(!doc[0].userName){
+        console.log(doc)
+        if(!doc.length){
             userInfo.save(function (sErr, sDoc) {
                 if(sErr){
                     console.log(sErr)
