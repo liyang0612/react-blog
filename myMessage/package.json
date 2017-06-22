@@ -4,7 +4,8 @@
   "description": "this is message",
   "main": "entry.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack --progress --colors"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +30,9 @@
   "devDependencies": {
     "css-loader": "^0.28.2",
     "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.3",
+    "path": "^0.12.7",
     "prop-types": "^15.5.10",
     "react-router": "^3.0.5",
     "react-router-dom": "^4.1.1",
