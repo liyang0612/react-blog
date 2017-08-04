@@ -5,6 +5,7 @@
   "main": "entry.js",
   "scripts": {
     "start": "node server.js",
+    "dev": "webpack-dev-server --inline --hot",
     "build": "webpack --progress --colors"
   },
   "author": "",

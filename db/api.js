@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 //查询数据
 app.get('/getapi', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     dbObject.text.find(function (err, doc) {
         if (err)
             console.log("error" + err)
@@ -18,6 +19,7 @@ app.get('/getapi', function (req, res) {
 })
 //增加数据
 app.post('/addapi', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     var addText = new dbObject.text(req.body)
     addText.save(function (err, doc) {
         if (err)
@@ -28,6 +30,7 @@ app.post('/addapi', function (req, res) {
 })
 //删除数据
 app.post('/deleteapi', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     dbObject.text.remove(req.body, function (err) {
         if(err)
             console.log("error" + err);
@@ -39,6 +42,7 @@ app.post('/deleteapi', function (req, res) {
 
 //博客文章模块
 app.post('/addArticle', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     req.body.articleId = Math.random().toString(36).substr(2);
     var addArticle = new dbObject.article(req.body);
     addArticle.save(function (err, doc) {
@@ -51,6 +55,7 @@ app.post('/addArticle', function (req, res) {
     })
 })
 app.get('/getArticle', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     dbObject.article.find(function (err, doc) {
         if(err){
             console.log(err)
@@ -60,6 +65,7 @@ app.get('/getArticle', function (req, res) {
     })
 })
 app.post('/deleteArticle', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     dbObject.article.remove(req.body, function (err, doc) {
         if(err){
             console.log(err);
@@ -70,6 +76,7 @@ app.post('/deleteArticle', function (req, res) {
     })
 })
 app.post('/insertArticle', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     dbObject.article.update({articleId: req.body.articleId}, { $set: req.body},{safe: true}, function(error) {
         if(error){
             console.log(error)
@@ -82,6 +89,7 @@ app.post('/insertArticle', function(req, res) {
 
 // 用户登录
 app.post('/login', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     dbObject.userInfo.find(function (err, doc) {
         if(err){
             console.log(err);

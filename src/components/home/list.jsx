@@ -11,7 +11,7 @@ class List extends React.Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: '/getArticle',
+            url: 'http://127.0.0.1:7777/getArticle',
             params: {
             }
         }).then(res => {

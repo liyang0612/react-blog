@@ -4,7 +4,7 @@ import myAjax from '../../ajax'
 
 var startState;
 //获取数据
-myAjax('GET', '/getapi', function (data) {
+myAjax('GET', 'http://127.0.0.1:7777/getArticle', function (data) {
     startState = JSON.parse(data)
 })
 function message(state = startState, action) {

@@ -1,4 +1,4 @@
-## react + node 博客（未完待续...）
+## react + node 博客
 
 ### react+redux 和 express+mongodb
 
@@ -6,4 +6,6 @@
 
 ### 注意事项
 - webpack2.0
-- 先安装启动mongodb,然后在npm start
+- 先安装启动mongodb。
+- npm server 启动服务器
+- npm run dev 启动页面

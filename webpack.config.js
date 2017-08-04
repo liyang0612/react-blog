@@ -1,5 +1,4 @@
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = {
     entry: [
@@ -39,17 +38,8 @@ var config = {
         extensions: ['.js', '.jsx']
     },
     plugins: [
-        // new webpack.optimize.OccurenceOrderPlugin(),
-        new ExtractTextPlugin('./static/base.css'),
+        new ExtractTextPlugin('./src/static/base.css'),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            inject: true | 'head' | 'body' | false
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        })
     ]
 
 }
